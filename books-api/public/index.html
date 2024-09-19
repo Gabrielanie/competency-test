@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Book List</h1>
+
+    <div id="book-list">
+    </div>
+
+    <h2>Add a New Book</h2>
+    <form id="add-book-form">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" required>
+        <button type="submit">Add Book</button>
+    </form>
+
+    <h2>Update a Book</h2>
+    <form id="update-book-form">
+        <label for="update-id">Book ID:</label>
+        <input type="number" id="update-id" name="id" required>
+        <label for="update-title">Title:</label>
+        <input type="text" id="update-title" name="title" required>
+        <label for="update-author">Author:</label>
+        <input type="text" id="update-author" name="author" required>
+        <button type="submit">Update Book</button>
+    </form>
+
+    <h2>Delete a Book</h2>
+    <form id="delete-book-form">
+        <label for="delete-id">Book ID:</label>
+        <input type="number" id="delete-id" name="id" required>
+        <button type="submit">Delete Book</button>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>
