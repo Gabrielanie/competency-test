@@ -4,29 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Responsive Html and css webpage</title>
+    <title>Gabriel Anie - Homepage</title>
 </head>
 <body>
     <header>
-        <h1>Gabriel Anie</h1>
-        <nav>
-            <ul>
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <h1>Gabriel Anie</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>
-        <h2>Main Title</h2>
-        <p>This is some placeholder text for the main content area. It gives an overview or introduction to the topic or purpose of the webpage.</p>
+        <section class="hero">
+            <h2 style="color: white;">Welcome to My Homepage</h2>
+            <p style="color: white;">This is a place where you can learn more about me and my work. I am passionate about building modern and responsive web applications that make a difference.</p>
+            <a href="about.html" class="btn">Learn More</a>
+        </section>
+
+        <h2>Highlight</h2>
+
+        <section class="highlights">
+           
+            <div class="highlight-item">
+                <h3>Front-End Development</h3>
+                <p>Creating beautiful and responsive user interfaces using the latest technologies.</p>
+            </div>
+            <div class="highlight-item">
+                <h3>Back-End Development</h3>
+                <p>Building robust and scalable server-side applications and APIs.</p>
+            </div>
+            <div class="highlight-item">
+                <h3>Design</h3>
+                <p>Crafting visually appealing designs that enhance user experience.</p>
+            </div>
+        </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Gabriel Anie. All rights reserved.</p>
+        <p style="color: white;">&copy; 2024 Gabriel Anie. All rights reserved.</p>
     </footer>
-
-
 </body>
 </html>

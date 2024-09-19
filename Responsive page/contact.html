@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Contact me</title>
-</head>
+    <title>Contact Me - Gabriel Anie</title>
+   </head>
 <body>
     <header>
         <h1>Gabriel Anie</h1>
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html" class="active">Contact</a></li>
             </ul>
@@ -19,14 +19,38 @@
     </header>
 
     <main>
-        <h2>Main Title</h2>
-        <p>This is some placeholder text for the main content area. It gives an overview or introduction to the topic or purpose of the webpage.</p>
+        <section class="contact-info">
+            <h2>Contact Information</h2>
+            <h3>Reach Out to Me</h3>
+            <p>Want to know about me Leave a text</p>
+            <p>Email: younganiel@gmail.com</p>
+            <p>Phone: (+234) 7052 9710 57</p>
+        </section>
+
+        <section class="map-container">
+            <h2>Find Me Here</h2>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.0832034051646!2d3.295436075040136!3d6.511152393481199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8f1d84cfebf7%3A0x4328fbcbbf5e0716!2s1%20Aso-Rock%20Ave%2C%20Alimosho%2C%20Lagos%20102214%2C%20Lagos!5e0!3m2!1sen!2sng!4v1726707029433!5m2!1sen!2sng" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> 
+               </section>
+
+        <section class="contact-form">
+            <h2>Contact Form</h2>
+            <form action="https://script.google.com/macros/s/AKfycby-mt9EGC6fz22y019nL5PUVLZhUrYJMt1L7vDGaKanSxg8nnsWqfC-xAgLKMoWr39U/exec" method="POST" target="_self">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="entry.2005620554" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="entry.1045781291" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="entry.1065046570" rows="6" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
     </main>
 
     <footer>
         <p>&copy; 2024 Gabriel Anie. All rights reserved.</p>
     </footer>
-
-
 </body>
 </html>
