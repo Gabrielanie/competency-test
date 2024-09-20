@@ -5,7 +5,7 @@ function fetchBooks() {
     fetch('/api/books')
         .then(response => response.json())
         .then(books => {
-            bookListDiv.innerHTML = ''; // Clear the book list
+            bookListDiv.innerHTML = ''; 
             books.forEach(book => {
                 const bookItem = document.createElement('div');
                 bookItem.innerHTML = `<strong>ID:</strong> ${book.id} | <strong>Title:</strong> ${book.title} | <strong>Author:</strong> ${book.author}`;
@@ -15,7 +15,6 @@ function fetchBooks() {
         .catch(error => console.error('Error fetching books:', error));
 }
 
-// Add a new book
 document.getElementById('add-book-form').addEventListener('submit', function (e) {
     e.preventDefault();
     const title = document.getElementById('title').value;
@@ -30,13 +29,12 @@ document.getElementById('add-book-form').addEventListener('submit', function (e)
     })
     .then(response => response.json())
     .then(book => {
-        fetchBooks(); // Refresh the book list
-        e.target.reset(); // Reset the form
+        fetchBooks(); 
+        e.target.reset(); 
     })
     .catch(error => console.error('Error adding book:', error));
 });
 
-// Update a book
 document.getElementById('update-book-form').addEventListener('submit', function (e) {
     e.preventDefault();
     const id = document.getElementById('update-id').value;
@@ -68,7 +66,7 @@ document.getElementById('delete-book-form').addEventListener('submit', function 
     })
     .then(() => {
         fetchBooks(); // Refresh the book list
-        e.target.reset(); // Reset the form
+        e.target.reset();  
     })
     .catch(error => console.error('Error deleting book:', error));
 });

@@ -1,55 +1,74 @@
 const express = require('express');
 const app = express();
+const connection = require('./db');  
+const path = require('path');
 const PORT = process.env.PORT || 5000;
 
-const path = require('path');
+app.use(express.json()); 
 
-// Serve static files from the 'public' directory
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.use(express.json());
-
-let books = [
-    { id: 1, title: '1984', author: 'George Orwell' },
-    { id: 2, title: 'The Great Gatsby', author: 'F. Scott Fitzgerald' },
-    { id: 3, title: 'To Kill a Mockingbird', author: 'Harper Lee' },
-    { id: 4, title: 'To Kill a fish', author: 'Gabriel Lee' },
-    { id: 5, title: 'To Love a Mockingbird', author: 'Anie Lee' },
-    { id: 6, title: 'To Run a Mockingbird', author: 'Ade Ayo' }
-
-];
-
 app.get('/api/books', (req, res) => {
-    res.json(books);
+  connection.query('SELECT * FROM books', (err, results) => {
+    if (err) {
+      console.error('Error fetching books:', err);
+      return res.status(500).send('Server error');
+    }
+    res.json(results);
+  });
 });
+
 
 app.post('/api/books', (req, res) => {
-    const newBook = {
-        id: books.length + 1,
-        title: req.body.title,
-        author: req.body.author
-    };
-    books.push(newBook);
-    res.status(201).json(newBook);
+  const { title, author } = req.body;
+  const query = 'INSERT INTO books (title, author) VALUES (?, ?)';
+  connection.query(query, [title, author], (err, result) => {
+    if (err) {
+      console.error('Error adding book:', err);
+      return res.status(500).send('Server error');
+    }
+    res.status(201).json({ id: result.insertId, title, author });
+  });
 });
 
-app.put('/api/books/:id', (req, res) => {
-    const bookId = parseInt(req.params.id);
-    const book = books.find(b => b.id === bookId);
-    if (!book) return res.status(404).json({ message: 'Book not found' });
 
-    book.title = req.body.title;
-    book.author = req.body.author;
-    res.json(book);
+
+app.put('/api/books/:id', (req, res) => {
+  const bookId = parseInt(req.params.id);
+  const { title, author } = req.body;
+  const query = 'UPDATE books SET title = ?, author = ? WHERE id = ?';
+
+  connection.query(query, [title, author, bookId], (err, result) => {
+    if (err) {
+      console.error('Error updating book:', err);
+      return res.status(500).send('Server error');
+    }
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: 'Book not found' });
+    }
+    res.json({ id: bookId, title, author });
+  });
 });
 
 app.delete('/api/books/:id', (req, res) => {
-    const bookId = parseInt(req.params.id);
-    books = books.filter(b => b.id !== bookId);
+  const bookId = parseInt(req.params.id);
+  const query = 'DELETE FROM books WHERE id = ?';
+
+  connection.query(query, [bookId], (err, result) => {
+    if (err) {
+      console.error('Error deleting book:', err);
+      return res.status(500).send('Server error');
+    }
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: 'Book not found' });
+    }
     res.status(204).send(); 
+  });
 });
 
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on http://localhost:${PORT}`);
 });
